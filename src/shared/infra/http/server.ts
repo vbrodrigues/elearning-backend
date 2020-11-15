@@ -8,11 +8,13 @@ import AppError from '../../errors/AppError';
 
 import '@shared/infra/typeorm';
 import '@shared/containers';
+import { errors } from 'celebrate';
 
 const app = express();
 
 app.use(express.json());
 app.use(routes);
+app.use(errors());
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
