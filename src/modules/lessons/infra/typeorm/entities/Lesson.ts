@@ -1,5 +1,13 @@
-import Course from "../../../../courses/infra/typeorm/entities/Course";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import Course from '../../../../courses/infra/typeorm/entities/Course';
 
 @Entity('lessons')
 class Lesson {
@@ -11,6 +19,9 @@ class Lesson {
 
   @Column('int')
   duration: number;
+
+  @Column('varchar')
+  course_id: string;
 
   @ManyToOne(() => Course)
   @JoinColumn({ name: 'course_id' })

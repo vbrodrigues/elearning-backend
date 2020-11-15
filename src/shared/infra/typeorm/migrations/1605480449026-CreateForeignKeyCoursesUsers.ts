@@ -1,15 +1,15 @@
 import { MigrationInterface, QueryRunner, TableForeignKey } from 'typeorm';
 
-export default class CreateForeignKeyLessonsCourses1605384906415
+export default class CreateForeignKeyCoursesUsers1605480449026
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createForeignKey(
-      'lessons',
+      'courses',
       new TableForeignKey({
-        name: 'LessonCourse',
-        columnNames: ['course_id'],
+        name: 'CourseUser',
+        columnNames: ['user_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'courses',
+        referencedTableName: 'users',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       }),
@@ -17,6 +17,6 @@ export default class CreateForeignKeyLessonsCourses1605384906415
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('lessons', 'LessonCourse');
+    await queryRunner.dropForeignKey('courses', 'CourseUser');
   }
 }
