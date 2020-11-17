@@ -18,6 +18,11 @@ class UsersRepository implements IUsersRepository {
     return user;
   }
 
+  public async findAll(): Promise<User[]> {
+    const users = this.ormRepository.find();
+    return users;
+  }
+
   public async findById(id: string): Promise<User | undefined> {
     const user = this.ormRepository.findOne(id);
     return user;

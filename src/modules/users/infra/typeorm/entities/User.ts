@@ -1,7 +1,9 @@
+import Course from '@modules/courses/infra/typeorm/entities/Course';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -16,6 +18,9 @@ class User {
 
   @Column('varchar')
   email: string;
+
+  @OneToMany(type => Course, course => course.user, { eager: true })
+  courses: Course[];
 
   @Column('varchar')
   password: string;
