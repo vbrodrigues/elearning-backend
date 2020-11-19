@@ -50,6 +50,10 @@ class CoursesRepository implements ICoursesRepository {
 
     return course;
   }
+
+  public async save(course: Course): Promise<Course> {
+    return this.ormRepository.save(course);
+  }
 }
 
 export default CoursesRepository;
