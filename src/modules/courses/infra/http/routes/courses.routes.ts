@@ -21,7 +21,7 @@ coursesRouter.post(
 );
 
 coursesRouter.put(
-  '/:id',
+  '/:course_id',
   celebrate({
     [Segments.BODY]: {
       name: Joi.string(),

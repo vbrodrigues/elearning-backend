@@ -1,9 +1,11 @@
+import Lesson from '@modules/lessons/infra/typeorm/entities/Lesson';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -20,6 +22,9 @@ class Course {
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @OneToMany(type => Lesson, lesson => lesson.course, { eager: true })
+  lessons: Course[];
 
   @Column('varchar')
   name: string;

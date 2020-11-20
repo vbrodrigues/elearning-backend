@@ -5,7 +5,7 @@ import Course from '../infra/typeorm/entities/Course';
 import ICoursesRepository from '../repositories/ICoursesRepository';
 
 interface IRequest {
-  id: string;
+  course_id: string;
   user_id: string;
   name?: string;
   image?: string;
@@ -22,7 +22,7 @@ class UpdateCourseService {
   ) {}
 
   public async execute({
-    id,
+    course_id,
     user_id,
     name,
     image,
@@ -33,7 +33,7 @@ class UpdateCourseService {
       throw new AppError('User not found.');
     }
 
-    const course = await this.coursesRepository.findById(id);
+    const course = await this.coursesRepository.findById(course_id);
 
     if (!course) {
       throw new AppError('Course not found.');

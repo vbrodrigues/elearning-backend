@@ -16,13 +16,18 @@ export default class CoursesController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
+    const { course_id } = request.params;
     const user_id = request.user.id;
     const { name, image } = request.body;
 
     const updateCourse = container.resolve(UpdateCourseService);
 
-    const course = await updateCourse.execute({ id, user_id, name, image });
+    const course = await updateCourse.execute({
+      course_id,
+      user_id,
+      name,
+      image,
+    });
 
     return response.json(course);
   }
