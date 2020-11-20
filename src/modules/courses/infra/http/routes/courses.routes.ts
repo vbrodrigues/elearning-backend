@@ -9,6 +9,10 @@ coursesRouter.use(useAuthentication);
 
 const coursesController = new CoursesController();
 
+coursesRouter.get('/', coursesController.show);
+
+coursesRouter.get('/:course_id/lessons', coursesController.index);
+
 coursesRouter.post(
   '/',
   celebrate({

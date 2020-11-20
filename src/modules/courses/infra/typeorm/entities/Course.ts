@@ -24,7 +24,7 @@ class Course {
   user: User;
 
   @OneToMany(type => Lesson, lesson => lesson.course, { eager: true })
-  lessons: Course[];
+  lessons: Lesson[];
 
   @Column('varchar')
   name: string;

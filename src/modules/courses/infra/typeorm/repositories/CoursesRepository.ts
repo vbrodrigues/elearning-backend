@@ -23,6 +23,10 @@ class CoursesRepository implements ICoursesRepository {
     return course;
   }
 
+  public async findAll(): Promise<Course[]> {
+    return this.ormRepository.find();
+  }
+
   public async findById(id: string): Promise<Course | undefined> {
     const course = await this.ormRepository.findOne(id);
 
